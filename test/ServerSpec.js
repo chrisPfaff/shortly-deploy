@@ -11,7 +11,7 @@ var Link = require('../app/models/link');
 // NOTE: these tests are designed for mongo!
 /////////////////////////////////////////////////////
 
-xdescribe('', function() {
+describe('', function() {
 
   beforeEach(function(done) {
     // Log out currently signed in user
@@ -35,7 +35,7 @@ xdescribe('', function() {
         .post('/links')
         .send({
           'url': 'definitely not a valid url'})
-        .expect(404)
+        .expect(404);
         .end(done);
     });
 

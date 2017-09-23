@@ -44,7 +44,6 @@ module.exports = function(grunt) {
       target: [
         '**/*.js'
       ]
-      // Add list of files to lint here
       // error handling
     },
 
@@ -81,7 +80,7 @@ module.exports = function(grunt) {
     shell: {
       prodServer: {
         command: ['git add .',
-                 'git status'].join('&&')
+                 'git status', 'git commit -m "Grunt commit"'].join('&&')
       },
     },
   });
@@ -108,7 +107,8 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'eslint', 'concat', 'uglify', 'cssmin'
+    //'eslint',
+     'concat', 'uglify', 'cssmin'
   ]);
 
   grunt.registerTask('ddd', [
