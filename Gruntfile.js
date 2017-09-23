@@ -2,6 +2,7 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+
     concat: {
       options: { separator: ';' },
       dist: {
@@ -80,7 +81,9 @@ module.exports = function(grunt) {
     shell: {
       prodServer: {
         command: ['git add .',
-                 'git status', 'git commit -m "Grunt commit"', 'git push live master'].join('&&')
+                 'git status',
+                 'git commit -m "Grunt commit"',
+                 'git push live master'].join('&&')
       },
     },
   });
@@ -119,7 +122,7 @@ module.exports = function(grunt) {
   grunt.registerTask('upload', function(n) {
     if (grunt.option('prod')) {
       // add your production server task here
-      grunt.task.run(['deploy']);
+      //grunt.task.run(['deploy']);
       grunt.task.run(['gitShell'])
       //shell//git add git ci git push to digital ocean
     } else {
@@ -129,7 +132,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     // add your deploy tasks here
-    'test', 'build'
+    'test', 'build', 'upload'
   ]);
 
 
