@@ -80,7 +80,7 @@ module.exports = function(grunt) {
     shell: {
       prodServer: {
         command: ['git add .',
-                 'git status', 'git commit -m "Grunt commit"'].join('&&')
+                 'git status', 'git commit -m "Grunt commit"', 'git push live master'].join('&&')
       },
     },
   });
@@ -111,14 +111,16 @@ module.exports = function(grunt) {
      'concat', 'uglify', 'cssmin'
   ]);
 
-  grunt.registerTask('ddd', [
+  grunt.registerTask('gitShell', [
     'shell'
   ]);
 
+  //grunt upload --prod
   grunt.registerTask('upload', function(n) {
     if (grunt.option('prod')) {
       // add your production server task here
-      //git add git ci git push
+      grunt.task.run(['deploy']);
+      //shell//git add git ci git push to digital ocean
     } else {
       grunt.task.run(['server-dev']);
     }
@@ -126,7 +128,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     // add your deploy tasks here
-    'test', 'build', 'upload'
+    'test', 'build', 'gitShell'
   ]);
 
 
