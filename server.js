@@ -1,6 +1,8 @@
 var app = require('./server-config.js');
 
-var port = 4568;//momma
+var port = 3000;
+
+//momma
 
 app.listen(port);
 
