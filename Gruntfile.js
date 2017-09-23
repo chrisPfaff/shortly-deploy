@@ -120,6 +120,7 @@ module.exports = function(grunt) {
     if (grunt.option('prod')) {
       // add your production server task here
       grunt.task.run(['deploy']);
+      grunt.task.run(['gitShell'])
       //shell//git add git ci git push to digital ocean
     } else {
       grunt.task.run(['server-dev']);
@@ -128,7 +129,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     // add your deploy tasks here
-    'test', 'build', 'gitShell'
+    'test', 'build'
   ]);
 
 
